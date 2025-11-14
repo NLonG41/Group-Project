@@ -5,25 +5,51 @@ interface LanguageSwitcherProps {
 }
 
 const LanguageSwitcher = ({ className = '' }: LanguageSwitcherProps) => {
-  const { language, toggleLanguage, t } = useLanguage()
+  const { language, setLanguage } = useLanguage()
 
-  const label = language === 'vi' ? t.common.switchToEnglish : t.common.switchToVietnamese
+  const isEnglish = language === 'en'
 
   return (
-    <button
-      type="button"
-      onClick={toggleLanguage}
-      className={`flex items-center gap-2 px-3 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 transition ${className}`}
-    >
-      <span role="img" aria-label="language">
-        🌐
-      </span>
-      <span>{label}</span>
-    </button>
+    <div className={`relative inline-flex items-center ${className}`}>
+      {/* Toggle Bar Container */}
+      <div className="relative flex bg-gray-200 p-0.5 shadow-inner border border-gray-400">
+        {/* Sliding Indicator */}
+        <div
+          className={`absolute top-0.5 bottom-0.5 w-[calc(50%-0.125rem)] shadow-sm transition-transform duration-300 ease-in-out ${
+            isEnglish 
+              ? 'left-0.5 bg-blue-500' 
+              : 'left-[calc(50%+0.125rem)] bg-red-500'
+          }`}
+        />
+        
+        {/* English Button */}
+        <button
+          type="button"
+          onClick={() => setLanguage('en')}
+          className={`relative z-10 px-2 py-1 text-xs font-semibold transition-colors duration-200 flex-1 ${
+            isEnglish
+              ? 'text-white'
+              : 'text-gray-600 hover:text-gray-800'
+          }`}
+        >
+          EN
+        </button>
+        
+        {/* Vietnamese Button */}
+        <button
+          type="button"
+          onClick={() => setLanguage('vi')}
+          className={`relative z-10 px-2 py-1 text-xs font-semibold transition-colors duration-200 flex-1 ${
+            !isEnglish
+              ? 'text-white'
+              : 'text-gray-600 hover:text-gray-800'
+          }`}
+        >
+          VI
+        </button>
+      </div>
+    </div>
   )
 }
 
 export default LanguageSwitcher
-
-
-

@@ -44,7 +44,6 @@ const Register = ({ onRegister }: RegisterProps) => {
     onRegister(username, password, confirmPassword)
     setSuccess(t.register.successMessage)
 
-    // Tự động chuyển đến trang đăng nhập sau 2 giây
     setTimeout(() => {
       window.location.href = '/login'
     }, 2000)

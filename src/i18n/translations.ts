@@ -47,6 +47,11 @@ export interface Translations {
   }
   header: {
     welcome: string
+    profile: string
+    settings: string
+    help: string
+    about: string
+    logout: string
   }
   sidebar: {
     dashboard: string
@@ -145,6 +150,11 @@ export const translations: Record<Language, Translations> = {
     },
     header: {
       welcome: 'Xin chào',
+      profile: 'Hồ sơ',
+      settings: 'Cài đặt',
+      help: 'Trợ giúp',
+      about: 'Giới thiệu',
+      logout: 'Đăng xuất',
     },
     sidebar: {
       dashboard: 'Bảng điều khiển',
@@ -241,6 +251,11 @@ export const translations: Record<Language, Translations> = {
     },
     header: {
       welcome: 'Hello',
+      profile: 'Profile',
+      settings: 'Settings',
+      help: 'Help',
+      about: 'About',
+      logout: 'Log out',
     },
     sidebar: {
       dashboard: 'Dashboard',
